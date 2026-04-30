@@ -28,24 +28,24 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
         delay: index * 0.1,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      whileHover={{ scale: 1.005 }}
-      className="group relative rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 overflow-hidden"
+      whileHover={{ y: -2 }}
+      className="group relative rounded-xl border border-white/5 bg-card/30 dark:bg-white/[0.02] backdrop-blur-sm p-6 transition-all duration-300"
     >
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      {/* Animated border beam */}
-      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-primary/50 via-purple-500/50 to-pink-500/50 mask-gradient" />
+      {/* Subtle gradient border on hover */}
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+        <div className="absolute inset-0 rounded-xl p-px bg-gradient-to-r from-primary/30 via-purple-500/30 to-pink-500/30" />
       </div>
+
+      {/* Subtle glow on hover */}
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Content */}
       <div className="relative z-10 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <p className="text-sm text-muted-foreground/80">{post.publishedAt}</p>
+            <p className="text-sm text-muted-foreground/70">{post.publishedAt}</p>
             {post.isPrivate && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100/80 text-amber-700 text-xs backdrop-blur-sm">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400/80 text-xs backdrop-blur-sm">
                 <Lock className="h-3 w-3" />
                 私密
               </span>
@@ -55,7 +55,7 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
             {isOwner && (
               <Link
                 href={`/editor/${post.id}`}
-                className="p-1.5 text-muted-foreground hover:text-foreground transition-colors opacity-0 group-hover:opacity-100"
+                className="p-1.5 text-muted-foreground/50 hover:text-foreground transition-colors opacity-0 group-hover:opacity-100"
                 title="编辑"
               >
                 <Edit className="h-4 w-4" />
@@ -66,10 +66,10 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
         </div>
 
         <Link href={`/posts/${post.id}`} className="block">
-          <h3 className="font-semibold text-lg tracking-tight group-hover:text-primary/80 transition-colors">
+          <h3 className="font-semibold text-lg tracking-tight group-hover:text-primary/90 transition-colors">
             {post.title}
           </h3>
-          <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-2 mt-2">
+          <p className="text-sm text-muted-foreground/60 leading-relaxed line-clamp-2 mt-2">
             {post.excerpt}
           </p>
         </Link>
@@ -77,7 +77,7 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
         <div className="flex items-center justify-between pt-2">
           <Link
             href={`/user/${post.author?.id}`}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-sm text-muted-foreground/70 hover:text-foreground transition-colors"
           >
             {post.author?.avatarUrl ? (
               <Image
@@ -88,7 +88,7 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
                 className="rounded-full"
               />
             ) : (
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary/50 to-purple-500/50 flex items-center justify-center text-xs text-white">
+              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary/60 to-purple-500/60 flex items-center justify-center text-xs text-white/90">
                 {authorName.charAt(0)}
               </div>
             )}
@@ -99,7 +99,7 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
               {post.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 rounded-full bg-muted/80 text-xs text-muted-foreground backdrop-blur-sm"
+                  className="px-2 py-0.5 rounded-full bg-muted/50 dark:bg-white/5 text-xs text-muted-foreground/60 backdrop-blur-sm"
                 >
                   {tag}
                 </span>
@@ -114,17 +114,17 @@ export function PostCard({ post, index, showEdit = false, currentUserId }: PostC
 
 export function PostCardSkeleton() {
   return (
-    <div className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 shadow-sm animate-pulse">
+    <div className="rounded-xl border border-white/5 bg-card/30 backdrop-blur-sm p-6 animate-pulse">
       <div className="space-y-3">
-        <div className="h-4 w-24 bg-muted/50 rounded" />
-        <div className="h-6 w-3/4 bg-muted/50 rounded" />
+        <div className="h-4 w-24 bg-muted/30 rounded" />
+        <div className="h-6 w-3/4 bg-muted/30 rounded" />
         <div className="space-y-2">
-          <div className="h-4 w-full bg-muted/50 rounded" />
-          <div className="h-4 w-2/3 bg-muted/50 rounded" />
+          <div className="h-4 w-full bg-muted/30 rounded" />
+          <div className="h-4 w-2/3 bg-muted/30 rounded" />
         </div>
         <div className="flex gap-2 pt-2">
-          <div className="h-5 w-16 bg-muted/50 rounded-full" />
-          <div className="h-5 w-20 bg-muted/50 rounded-full" />
+          <div className="h-5 w-16 bg-muted/30 rounded-full" />
+          <div className="h-5 w-20 bg-muted/30 rounded-full" />
         </div>
       </div>
     </div>
