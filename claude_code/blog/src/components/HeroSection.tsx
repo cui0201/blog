@@ -241,7 +241,7 @@ export function HeroSection({ userName, userBio, isOwner = false, isUserSpace = 
               )}
 
               <span className="relative">
-                <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
+                <span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent animate-gradient dark:from-white dark:via-zinc-100 dark:to-white">
                   {contentLetters.map((letter, i) => (
                     <motion.span
                       key={`c-${i}`}

@@ -76,9 +76,9 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen bg-background"
+      className="min-h-screen bg-background pt-16"
     >
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
+      <header className="fixed top-0 left-0 right-0 z-[60] border-b bg-background/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
@@ -98,7 +98,7 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
                 "flex items-center gap-2 px-3 py-1.5 text-sm rounded-md transition-colors",
                 preview
                   ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-white/10"
               )}
             >
               {preview ? (
@@ -120,8 +120,8 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
               className={cn(
                 "flex items-center gap-2 px-3 py-1.5 text-sm rounded-md transition-colors",
                 isPrivate
-                  ? "bg-amber-100 text-amber-800"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  ? "bg-amber-500/20 text-amber-400 dark:bg-amber-500/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-white/10"
               )}
             >
               {isPrivate ? (
@@ -153,7 +153,7 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
         <input
           {...register("title")}
           placeholder="文章标题"
-          className="w-full text-4xl font-bold bg-transparent border-none outline-none placeholder:text-muted-foreground mb-6"
+          className="w-full text-4xl font-bold bg-transparent border-none outline-none placeholder:text-muted-foreground mb-6 dark:placeholder:text-zinc-600"
         />
         {errors.title && (
           <p className="text-sm text-destructive mb-4">{errors.title.message}</p>
@@ -161,17 +161,17 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
 
         <div className="grid grid-cols-2 gap-6 min-h-[calc(100vh-200px)]">
           <div className={cn("space-y-4", preview && "hidden md:block")}>
-            <label className="text-sm font-medium text-muted-foreground">摘要（可选）</label>
+            <label className="text-sm font-medium text-muted-foreground dark:text-zinc-400">摘要（可选）</label>
             <input
               {...register("excerpt")}
               placeholder="简短描述文章内容..."
-              className="w-full px-0 py-2 text-muted-foreground bg-transparent border-0 border-b border-border outline-none focus:border-primary"
+              className="w-full px-0 py-2 text-foreground bg-transparent border-0 border-b border-border/50 dark:border-zinc-800 outline-none focus:border-primary dark:text-zinc-200 dark:placeholder:text-zinc-600"
             />
 
             <textarea
               {...register("content")}
               placeholder="使用 Markdown 编写..."
-              className="w-full min-h-[calc(100vh-300px)] p-4 bg-muted/50 rounded-lg border border-border outline-none focus:ring-2 focus:ring-ring/50 resize-none font-mono text-sm"
+              className="w-full min-h-[calc(100vh-300px)] p-4 bg-zinc-100 dark:bg-zinc-900 rounded-lg border border-border dark:border-zinc-800 outline-none focus:ring-2 focus:ring-ring/50 resize-none font-mono text-sm text-foreground dark:text-zinc-200 dark:placeholder:text-zinc-600"
             />
             {errors.content && (
               <p className="text-sm text-destructive">{errors.content.message}</p>
