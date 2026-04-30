@@ -229,7 +229,7 @@ html {
 body,
 body * {
   transition-property: background-color, border-color;
-  transition-duration: 500ms;
+  transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
