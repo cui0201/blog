@@ -24,8 +24,10 @@ function HeroSkeleton() {
 function FullScreenBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base gradient layer - full viewport */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5" />
+      {/* Solid background for light mode */}
+      <div className="absolute inset-0 bg-white dark:bg-zinc-950" />
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5" />
 
       {/* Animated orbs - positioned relative to viewport */}
       <motion.div
@@ -241,7 +243,7 @@ export function HeroSection({ userName, userBio, isOwner = false, isUserSpace = 
               )}
 
               <span className="relative">
-                <span className="bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent animate-gradient dark:from-white dark:via-zinc-100 dark:to-white">
+                <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 dark:from-white dark:via-zinc-100 dark:to-white bg-clip-text text-transparent animate-gradient">
                   {contentLetters.map((letter, i) => (
                     <motion.span
                       key={`c-${i}`}

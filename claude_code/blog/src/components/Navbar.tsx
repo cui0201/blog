@@ -30,9 +30,9 @@ export function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-[100]"
     >
-      <div className="backdrop-blur-md/80 bg-white/30 dark:bg-black/30 supports-[backdrop-filter]:bg-white/20 dark:supports-[backdrop-filter]:bg-black/30">
+      <div className="bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-8">
           <nav className="flex items-center gap-1">
             <Link
@@ -40,8 +40,8 @@ export function Navbar() {
               className={cn(
                 "flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
                 isActive("/")
-                  ? "bg-white/50 dark:bg-white/20 text-foreground"
-                  : "text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10"
+                  ? "bg-black/5 dark:bg-white/10 text-zinc-900 dark:text-white"
+                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               )}
             >
               <Home className="h-4 w-4" />
@@ -53,7 +53,7 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-9 h-9 rounded-full text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-200"
+                className="flex items-center justify-center w-9 h-9 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200"
                 aria-label="切换主题"
               >
                 {resolvedTheme === "dark" ? (
@@ -71,8 +71,8 @@ export function Navbar() {
                   className={cn(
                     "flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
                     pathname.startsWith("/user")
-                      ? "bg-white/50 dark:bg-white/20 text-foreground"
-                      : "text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10"
+                      ? "bg-black/5 dark:bg-white/10 text-zinc-900 dark:text-white"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
                   )}
                 >
                   <UserIcon className="h-4 w-4" />
@@ -83,8 +83,8 @@ export function Navbar() {
                   className={cn(
                     "flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
                     pathname === "/editor/new"
-                      ? "bg-white/50 dark:bg-white/20 text-foreground"
-                      : "text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10"
+                      ? "bg-black/5 dark:bg-white/10 text-zinc-900 dark:text-white"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
                   )}
                 >
                   <PenLine className="h-4 w-4" />
@@ -95,15 +95,15 @@ export function Navbar() {
                   className={cn(
                     "flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
                     isActive("/settings")
-                      ? "bg-white/50 dark:bg-white/20 text-foreground"
-                      : "text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10"
+                      ? "bg-black/5 dark:bg-white/10 text-zinc-900 dark:text-white"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
                   )}
                 >
                   <Settings className="h-4 w-4" />
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full text-foreground/70 hover:text-foreground hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-200"
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-200"
                 >
                   <LogOut className="h-4 w-4" />
                 </button>
@@ -112,13 +112,13 @@ export function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                 >
                   登录
                 </Link>
                 <Link
                   href="/register"
-                  className="px-4 py-2 text-sm font-medium bg-white/80 dark:bg-white/20 backdrop-blur-sm text-foreground rounded-full hover:bg-white/90 dark:hover:bg-white/30 transition-colors"
+                  className="px-4 py-2 text-sm font-medium bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
                 >
                   注册
                 </Link>
