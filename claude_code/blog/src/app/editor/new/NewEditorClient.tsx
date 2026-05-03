@@ -78,7 +78,7 @@ export function NewEditorClient({ userId }: NewEditorClientProps) {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-background pt-16"
     >
-      <header className="fixed top-0 left-0 right-0 z-[60] border-b bg-background/80 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-[110] border-b bg-background/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
